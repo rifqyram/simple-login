@@ -1,13 +1,13 @@
 package com.example.simplelogin.auth.service;
 
-import com.example.simplelogin.auth.entity.RefreshToken;
 import com.example.simplelogin.auth.model.RefreshTokenResponse;
+import com.example.simplelogin.auth.model.SignInResponse;
 
 public interface RefreshTokenService {
 
     RefreshTokenResponse create(String userId);
 
-    RefreshTokenResponse getRefreshToken(RefreshToken refreshToken);
+    SignInResponse verifyRefreshToken(String token);
 
     void delete(String id);
 

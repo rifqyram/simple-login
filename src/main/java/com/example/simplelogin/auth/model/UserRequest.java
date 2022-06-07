@@ -2,7 +2,6 @@ package com.example.simplelogin.auth.model;
 
 import com.example.simplelogin.auth.entity.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;

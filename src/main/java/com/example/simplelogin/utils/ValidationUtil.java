@@ -11,12 +11,14 @@ import java.util.Set;
 @Component
 public class ValidationUtil {
 
-    public Validator validator() {
-        return new LocalValidatorFactoryBean();
+    private final Validator validator;
+
+    public ValidationUtil(Validator validator) {
+        this.validator = validator;
     }
 
-    public <T> void validate(T any) {
-        Set<ConstraintViolation<T>> result = validator().validate(any);
+    public <T> void validate(T object) {
+        Set<ConstraintViolation<T>> result = validator.validate(object);
         if (result.size() != 0) {
             throw new ConstraintViolationException(result);
         }

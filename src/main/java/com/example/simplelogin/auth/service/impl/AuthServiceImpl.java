@@ -9,7 +9,7 @@ import com.example.simplelogin.auth.model.UserResponse;
 import com.example.simplelogin.auth.repository.UserRepository;
 import com.example.simplelogin.auth.service.AuthService;
 import com.example.simplelogin.auth.service.RefreshTokenService;
-import com.example.simplelogin.exception.NotAcceptableException;
+import com.example.simplelogin.constant.ResponseMessage;
 import com.example.simplelogin.security.jwt.JwtUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -64,9 +63,9 @@ public class AuthServiceImpl implements AuthService {
 
         return new SignInResponse(
                 userDetail.getUsername(),
-                jwtToken,
-                refreshTokenResponse.getToken()
-        );
+                refreshTokenResponse.getToken(),
+                jwtToken
+                );
     }
 
     @Override
@@ -74,7 +73,7 @@ public class AuthServiceImpl implements AuthService {
         UserDetailImpl userDetail = (UserDetailImpl) authentication.getPrincipal();
         refreshTokenService.delete(userDetail.getId());
         log.info("User {} signed out", userDetail.getUsername());
-        return "Logout success";
+        return ResponseMessage.LOGOUT_SUCCESS;
     }
 
 }

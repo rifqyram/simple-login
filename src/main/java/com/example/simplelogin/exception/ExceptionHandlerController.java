@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.validation.ConstraintViolationException;
+
 @ControllerAdvice
 public class ExceptionHandlerController {
 
@@ -19,6 +21,18 @@ public class ExceptionHandlerController {
                 null
                 );
         return new ResponseEntity<>(webResponse, notFound);
+    }
+
+    @ExceptionHandler(value = {ConstraintViolationException.class})
+    public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException e) {
+        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        WebResponse<String> webResponse = new WebResponse<>(
+                400,
+                badRequest,
+                e.getMessage(),
+                null
+                );
+        return new ResponseEntity<>(webResponse, badRequest);
     }
 
     @ExceptionHandler(value = {NotAcceptableException.class})
