@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "simple.app.jwtCookieName",
+      "type": "java.lang.String",
+      "description": "Description for simple.app.jwtCookieName."
+  }
+] }
