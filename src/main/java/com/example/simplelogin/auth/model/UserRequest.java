@@ -10,15 +10,17 @@ public class UserRequest {
 
     @NotBlank(message = "Email is required")
     @Email(message = "Email is invalid")
-    private final String email;
+    private String email;
 
     @NotBlank(message = "Password is required")
-    @Min(value = 6, message = "Password must be at least 6 characters")
-    private final String password;
+    private String password;
 
     public UserRequest(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public UserRequest() {
     }
 
     public String getEmail() {

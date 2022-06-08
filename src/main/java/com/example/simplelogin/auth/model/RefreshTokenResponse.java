@@ -2,19 +2,22 @@ package com.example.simplelogin.auth.model;
 
 public class RefreshTokenResponse {
 
-    private final String id;
+    private String id;
 
-    private final UserResponse user;
+    private UserResponse user;
 
-    private final String token;
+    private String token;
 
-    private final Long expiresAt;
+    private Long expiresAt;
 
     public RefreshTokenResponse(String id, UserResponse user, String token, Long expiresAt) {
         this.id = id;
         this.user = user;
         this.token = token;
         this.expiresAt = expiresAt;
+    }
+
+    public RefreshTokenResponse() {
     }
 
     public String getId() {

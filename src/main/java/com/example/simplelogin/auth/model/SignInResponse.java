@@ -2,16 +2,19 @@ package com.example.simplelogin.auth.model;
 
 public class SignInResponse {
 
-    private final String email;
+    private String email;
 
-    private final String refreshToken;
+    private String refreshToken;
 
-    private final String accessToken;
+    private String accessToken;
 
     public SignInResponse(String email, String refreshToken, String accessToken) {
         this.email = email;
         this.refreshToken = refreshToken;
         this.accessToken = accessToken;
+    }
+
+    public SignInResponse() {
     }
 
     public String getEmail() {

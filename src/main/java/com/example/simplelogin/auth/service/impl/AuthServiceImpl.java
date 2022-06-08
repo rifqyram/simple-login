@@ -65,7 +65,7 @@ public class AuthServiceImpl implements AuthService {
                 userDetail.getUsername(),
                 refreshTokenResponse.getToken(),
                 jwtToken
-                );
+        );
     }
 
     @Override
